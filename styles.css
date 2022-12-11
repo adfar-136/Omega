@@ -1,0 +1,37 @@
+#heading {
+    color: red;
+  }
+
+  #heading1 {
+    color: blue;
+  }
+  #h1 {
+    color: brown;
+  }
+  #innerBox{
+    color: darkorange;
+  }
+  .innerBox{
+     color: pink;
+     text-align: center;
+     font-size: 30px;
+   
+  }
+  
+  .NarBox{
+    font-size: 50px;
+    text-align: left;
+  }
+  .innerBox2{
+    color: gray;
+    
+    text-align: center;
+    
+  }
+  * {
+    color: lawngreen;
+    
+}
+h1, h2, p {
+    color: green;
+}
