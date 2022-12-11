@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <h1>HTML FORMS</h1>
+      <div>
+        <form>
+          <input type="text" placeholder="Enter Your Name" /> <br /><br />
+
+          <input type="email" placeholder="Enter your email" /> <br /><br />
+
+          <input type="password" placeholder="Enter password" required />
+          <br /><br />
+          <button type="button">Submit</button>
+        </form>
+      </div>
+      <form>
+        <input type="radio" name="lang" id="html" value="HTML" />
+        <label for="html">HTML</label>
+        <input type="radio" name="lang" id="css" value="CSS" />
+        <label for="css">CSS</label>
+        <input type="radio" name="lang" id="js" value="JS" />
+        <label for="js">JS</label>
+        <button type="button">Submit</button>
+      </form>
+      <form action="">
+        <input type="checkbox" name="lang" id="html" value="HTML" />
+        <label for="html">HTML</label>
+        <input type="checkbox" name="lang" id="css" value="CSS" />
+        <label for="css">CSS</label>
+        <input type="checkbox" name="lang" id="js" value="JS" />
+        <label for="js">JS</label>
+        <button type="button">Submit</button>
+      </form>
+      <form action="">
+        <label for="">Choose a Language</label>
+        <select name="" id="">
+          <option value="">Select</option>
+          <option value="">HTML</option>
+          <option value="">CSS</option>
+          <option value="" selected>JS</option>
+          <option value="">React</option>
+          <option value="">Bootstrap</option>
+        </select>
+
+        <button type="button">Submit</button>
+      </form>
+      <!-- <form action="">
+            <textarea name="" id="" cols="90" rows="10"></textarea>
+        </form> -->
+
+      <form action="">
+        <fieldset>
+          <legend>Programming</legend>
+         First Name:
+          <input type="text" /> <br /><br />
+          <label for="">Last Name:</label>
+          <input type="text" /><br /><br />
+          <label for="">Enter Email</label>
+          <input type="email" /><br /><br />
+          <label for="">Choose a Language</label>
+          <select name="" id="">
+            <option value="">Select</option>
+            <option value="">HTML</option>
+            <option value="">CSS</option>
+            <option value="" selected>JS</option>
+            <option value="">React</option>
+            <option value="">Bootstrap</option>
+          </select>
+
+          <button type="button">Submit</button>
+        </fieldset>
+      </form>
+
+      <form action="">
+        <label for="">Programming</label>
+        <input list="programs" type="text" />
+        <datalist id="programs">
+          <option value="HTML">
+          <option value="CSS">
+          <option value="JS">
+          <option value="React">
+        </datalist>
+      </form>
+    </section>
+  </body>
+</html>
