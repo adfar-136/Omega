@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    div {
+        width: 100px;
+        height: 100px;
+        border: 2px solid green;
+        background-color: blue;
+        transition: width 4s,border 2s;
+   
+    }
+    div:hover{
+        width:300px;
+        border: 3px dotted orange;
+       height:300px;
+       transform: rotate(12deg);
+       background-color: red;
+    }
+    #div1{
+        transition-timing-function: linear;
+    }
+    #div2{
+        transition-timing-function: ease;
+    }
+    #div3{
+        transition-timing-function: ease-in;
+    }
+    #div4{
+        transition-timing-function: ease-out;
+    }
+    #div5{
+        transition-timing-function: ease-in-out;
+    }
+  </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <div id="div5"></div>
+
+</body>
+</html>
