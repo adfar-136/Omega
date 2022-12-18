@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Project Registration with CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Services</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h1>Registration Form Of Omega</h1>
+        <form action="">
+            <div class="form-control">
+                <label for="" id="label-name">Name</label>
+                <input type="text" id="name" placeholder="Enter Your Name">
+            </div>
+            <div class="form-control">
+                <label for="email" id="label-email">Email</label>
+                <input type="email" id="email" placeholder="Enter your Email"/>
+            </div>
+            <div class="form-control">
+                <label for="age" id="label-age">Age</label>
+                <input type="text" id="age" placeholder="Enter your Age"/>
+            </div>
+            <div class="form-control">
+                <label for="role" id="label-role">Which option best suits you</label>
+                <select name="role" id="role">
+                    <option value="select">select</option>
+                    <option value="student">student</option>
+                    <option value="intern">intern</option>
+                    <option value="Professional">Professional</option>
+                    <option value="Other">Other</option>
+
+                </select>
+            </div>
+            <div class="form-control">
+                <label for="">Gender :</label>
+                <label for=""><input type="radio" name="gender">Male</label>
+                <label for=""><input type="radio" name="gender">Female</label>
+                <label for=""><input type="radio" name="gender">Other</label>
+            </div>
+            <div class="form-control">
+                <label for=""> Languages and frameworks
+                    <small>(Checkall that apply)</small>
+                </label>
+                <label for="inp-1"><input type="checkbox" name="inp">C</label>
+                <label for="inp-1"><input type="checkbox" name="inp">C++</label>
+                <label for="inp-1"><input type="checkbox" name="inp">HTML</label>
+                <label for="inp-1"><input type="checkbox" name="inp">CSS</label>
+                <label for="inp-1"><input type="checkbox" name="inp">JS</label>
+                <label for="inp-1"><input type="checkbox" name="inp">Java</label>
+                <label for="inp-1"><input type="checkbox" name="inp">Python</label>
+
+            </div>
+            <div class="form-control">
+                <label for="comment"> Any Comments or suggestions</label>
+                <textarea name="" id="" cols="30" rows="10" placeholder="Enter your message here"></textarea>
+            </div>
+            <button type="button" >Submit</button>
+        </form>
+    </section>
+</body>
+</html>
