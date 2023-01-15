@@ -126,6 +126,7 @@ function add(a,b,...c){
    console.log(c[2])
    console.log(c.length)
    console.log(c.indexOf("Supriya"))
+   console.log("adfar")
 }
 add('Mayur','Adfar','Syed','Vaibhav','Supriya')
 
