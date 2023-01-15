@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <style>
+    .wrapper{
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 60px 60px 60px;
+        grid-template-areas: "..... header header"
+        "sidebar content content";
+    }
+    .header{
+        grid-area: header;
+        background-color: aqua;
+    }
+    .sidebar{
+        grid-area: sidebar;
+        background-color: rgb(34, 42, 42);
+    }
+    .content{
+        grid-area: content;
+        background-color: rgb(252, 163, 10);
+    }
+   </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">Header</div>
+        <div class="sidebar">Sidebar</div>
+        <div class="content">Content</div>
+    </div>
+</body>
+</html>
