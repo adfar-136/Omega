@@ -1,0 +1,14 @@
+<html>
+    <script>
+        function a(b){
+           
+            function inner(){
+                return b
+            }
+            return inner
+        }
+        var getclose = a(10)
+        console.log(getclose())
+
+    </script>
+</html>

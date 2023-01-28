@@ -1,0 +1,20 @@
+<html>
+    <body>
+        <div onscroll="myfunction()" style="height: 200px; width:300px;overflow-y:auto;">
+            <div id="mydiv" style="width: 250px;
+            height:150px;padding:12px;border:2px solid black">
+               Scroll to display the bpounding client rect of the element with the border  
+            </div>
+            <div style="width: 1000px;height:1000px"></div>
+        </div>
+        <p id="p1"></p>
+        <script>
+            function myfunction(){
+                const element = document.getElementById("mydiv");
+                const rect = element.getBoundingClientRect()
+                document.getElementById("p1").innerHTML = 
+                "Left : " + rect.left + " bottom : " + rect.bottom
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+       <!-- <p onmousedown="myfunc()">Double click</p>
+        <p id="p1"></p>
+        <button id="btn">1</button>
+        <script>
+            function myfunc(){
+                document.getElementById("btn").innerHTML="hello Adfar"
+            }
+        </script> -->
+
+        <h2 onclick="showcoords(event)">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id eius reprehenderit vel, sit odit, quas culpa natus assumenda, accusamus commodi soluta ab! Eaque, quibusdam optio. Perspiciatis nulla numquam odio mollitia optio dignissimos, modi in at eum necessitatibus reiciendis deleniti, sequi illum aut veritatis facere sit consequatur officiis tenetur amet iure iste soluta. At, fugiat.</h2>
+        <p id="p1"></p>
+        <script>
+            function showcoords(event){
+                var x = event.clientX;
+                var y = event.clientY;
+                var coords = "X coords : "+ x + " Y coords :" + y;
+                document.getElementById("p1").innerHTML = coords
+            }
+        </script>
+    </body>
+</html>

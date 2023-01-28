@@ -1,0 +1,60 @@
+<html>
+    <head>
+       <style>
+        .mystyle{
+            color: red;
+            background-color: green;
+        }
+       </style>
+    </head>
+    <body >
+       <!-- <p onclick="myFunc(event)">gfcft</p> -->
+        <!-- <form onsubmit="submitfunction()">
+            
+             <input type="button" onmouseover="clickevent()" value="Button"> -->
+            <!-- <input type="type" onkeydown="clickevent()" > -->
+            <!-- <input type="text" onfocus="focusfunc()" id="adfar">
+            <input type="text" id="change" onchange="changefunc()">
+            <input type="submit"> 
+        </form> -->
+        <button onclick="myfun()">Add</button>
+        <div id="div1">
+            <p>Adfar Rasheed</p>
+        </div>
+        <button onclick="myfun1()">Remove</button>
+        <button onclick="myToggle()">Toggle</button>
+        <script>
+            function myToggle(){
+                document.getElementById("div1").classList.toggle("mystyle")
+            }
+           function myfun(){
+               const list = document.getElementById("div1").classList
+               list.add("mystyle")
+               console.log(list);
+           }
+           function myfun1(){
+            document.getElementById("div1").classList.remove("mystyle")
+           }
+
+
+
+
+            function myFunc(event){
+                let x = event.target.innerHTML;
+                console.log(x)
+            }
+            //  function clickevent(){
+              //    alert('onkey down event')
+             // }
+             function focusfunc(){
+              document.getElementById("adfar").style.backgroundColor="green"
+             }
+             function changefunc(){
+              alert('changed')
+             }
+             function submitfunction(){
+              alert('submit is clicked')
+             }
+          </script>
+    </body>
+</html>

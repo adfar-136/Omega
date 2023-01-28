@@ -1,0 +1,29 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="pp1">
+            <div id="p1">
+                <button id="c1" >I am child Element</button>
+            </div>
+        </div>
+        
+       <script>
+        var gparent = document.querySelector("#pp1")
+        gparent.addEventListener("click",function(){
+            console.log("gparent is invoked ")
+        })
+        var parent = document.querySelector("#p1")
+        parent.addEventListener("click",function(){
+            console.log("parent is invoked ")
+        })
+        var child = document.querySelector("#c1")
+        child.addEventListener("click",function(){
+            console.log("Child is invoked ")
+        }) 
+       </script>
+        
+      
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+</head>
+<body>
+   <h1 id="name">Adfar Rasheed</h1>
+ <button onclick="myfunct()">Remove Name</button>
+    <ul id="skill">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JS</li>
+    </ul>
+    
+    <button onclick="myfunc()">Remove</button>
+    <ul>
+        <li>React</li>
+        <li id="njs">NodeJS</li>
+        <li>Express</li>
+    </ul>
+    <button onclick="myfun()">Remove one</button>
+    <script>
+        //document.write("Adfar Rasheed")
+       /*---- var element = document.getElementById("para")
+        element.innerHTML="Adfar Rashhed paragrapgh"
+        console.log(element)---*/
+
+       /*-- const ele = document.createElement("h1")
+        ele.innerHTML = "Adfar Heading"
+        document.body.appendChild(ele) ---*/
+        function myfunct(){
+            let ele = document.getElementById("name")
+            console.log(ele)
+            ele.remove()
+        }
+
+       function myfunc(){
+        const skillele = document.getElementById("skill")
+        console.log(skillele)
+        skillele.removeChild(skillele.firstElementChild)
+       }
+       function myfun(){
+        const element = document.getElementById("njs")
+        console.log(element)
+        element.parentNode.removeChild(element)
+       }
+    </script>
+</body>
+</html>
