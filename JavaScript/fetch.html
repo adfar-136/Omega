@@ -1,18 +1,21 @@
 <html>
-    <head>
-        
-        <script>
-            let data = fetch('https://newsapi.org/v2/everything?q=tesla&from=2022-12-29&sortBy=publishedAt&apiKey=28a2c6b3aa1945c2afd8012e42fdac9e')
-            data.then(res=>{
-                res.json().then(a=>{
-                    console.log(a.articles.map((e)=>{
-                        document.write(`<ul>
+  <head>
+    <script>
+      let data = fetch(
+        "https://newsapi.org/v2/everything?q=tesla&from=2022-12-29&sortBy=publishedAt&apiKey=28a2c6b3aa1945c2afd8012e42fdac9e"
+      );
+      data.then((res) => {
+        res.json().then((a) => {
+          console.log(
+            a.articles.map((e) => {
+              document.write(`<ul>
                             <li>${e.title}</li>
-                        <li>${e.description}</li></ul;>`)
-                    }))
-                })
+                        <li>${e.description}</li></ul;>`);
             })
-        </script>
-    </head>
-    <h1></h1>
+          );
+        });
+      });
+    </script>
+  </head>
+  <h1></h1>
 </html>

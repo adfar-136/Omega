@@ -1,0 +1,161 @@
+import {name,age} from "./person"
+function App() {
+  return (
+    <>
+      <div>
+        {header}
+        {main}
+        <h1 className={name}>{name} {age}</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt obcaecati, sint voluptas itaque nam totam minima facilis harum soluta, velit vitae molestiae accusantium hic repellat pariatur accusamus natus amet? Totam, tempora suscipit reiciendis ab at officiis tempore praesentium necessitatibus magnam, enim, minima nobis fugit cum cumque corporis? Est eos hic molestias esse qui mollitia iste magni fuga necessitatibus laborum optio doloremque molestiae, dolor laboriosam nostrum commodi recusandae! Nam numquam dignissimos, quo natus molestiae cumque esse possimus quod doloribus dicta laborum voluptas voluptatum unde reprehenderit mollitia quae eveniet accusantium ipsum deserunt! Nemo excepturi adipisci ad dolorum veniam similique laudantium dolor at consectetur quam non quo eveniet commodi asperiores recusandae hic doloribus eius, sapiente, aut beatae rem voluptates tempora? Temporibus ex natus eos quae fugiat? Sed enim ipsa commodi placeat accusamus labore vel minima tempora fugiat, magni quisquam provident quibusdam, eum, in ullam nemo eveniet odit assumenda repudiandae repellendus? Placeat veritatis consequatur voluptate animi natus deserunt minima soluta modi itaque assumenda in ratione velit distinctio quo, dolor consectetur. Fugit voluptate expedita quam ea consequuntur sunt pariatur animi impedit dolor porro totam, eveniet laboriosam, consequatur magni quos nihil deserunt illum beatae similique vel rem autem temporibus quasi. Eveniet non numquam quas sapiente aspernatur? Hic sapiente quos tempora blanditiis corporis ut consequuntur quasi, accusamus suscipit minus autem perferendis libero mollitia rem dicta fugit odio doloribus temporibus tempore quas. Explicabo quam earum molestias ducimus, inventore rem odit hic possimus velit consequatur pariatur? Veniam eum perspiciatis eius, nemo rem doloremque sed sapiente, a error culpa delectus autem. Numquam quam facere at veniam placeat fugit tempora ab id praesentium quae blanditiis est incidunt impedit soluta eligendi, quos, facilis eius dolorem? Accusantium accusamus beatae facere adipisci assumenda dolore rem totam a eum, eos reprehenderit quaerat nostrum. Dolorem suscipit id deserunt excepturi. Dignissimos incidunt ducimus doloremque non, velit sed!</p>
+      </div>
+    </>
+  );
+}
+const mystyle = {
+  color:"red",
+  backgroundColor:"green",
+  border :"2px red solid"
+}
+const header = (
+  <header style={{color:"red",backgroundColor:"black"}}>
+    <h1 style={{fontSize:"18px"}}>Welcome to the react classes</h1>
+    <h1>Getting started with react</h1>
+    <p>Javascript completed</p>
+    <small>Adfar Rasheed</small>
+  </header>
+)
+const main =(
+  <main style={mystyle}>
+    <p>Prerequistes to get started</p>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JS</li>
+    </ul>
+  </main>
+)
+
+export default App;
+
+
+
+import About from "./components/About";
+import Header from "./components/Header";
+import Title from "./components/Title";
+
+function App() {
+  let name = "Adfar rashid"
+  let age = 25
+  let gravity = 9.8
+  let arr = [1,2,3,4,5]
+  return (
+    <>
+      <div>
+       <Header name="Adfar" age="25"/>
+       <Header name="Supriya" age="25"/>
+       <Header name="syed" age="25"/>
+       <About name={name} age={age} gravity={gravity}/>
+       <Title arr={arr}/>
+       
+      </div>
+    </>
+  );
+}
+
+
+export default App;
+
+
+
+import React from 'react'
+
+export default function App() {
+  return (
+    <div>
+      <Skills skill={["HTML","CSS","JS"]}/>
+    </div>
+  )
+}
+
+const Skills = (props)=>{
+  const skilllist = props.skill.map((x)=>
+    <li>{x}</li>
+  )
+  return (
+    <h1>{skilllist}</h1>
+  )
+}
+
+
+
+import React from 'react'
+
+export default function App() {
+  const data = {
+    welcome :"Welcome to react classes",
+    title :"MERN Educator",
+    author:"Adfar rasheed"
+  }
+  const sayAdfar=()=>{
+    alert('Adfar')
+  }
+  return (
+    <div>
+      <Message data={data}/>
+      <Button text="Click Me" onClick={sayAdfar}/>
+    </div>
+  )
+}
+
+const Button =(props)=>{
+  return (
+    <button onClick={props.onClick}>{props.text}</button>
+  )
+}
+const Message = (props)=>{
+  return (
+    <header>
+      <div>
+        <h1>{props.data.welcome}</h1>
+        <h1>{props.data.title}</h1>
+        <h1>{props.data.author}</h1>
+      </div>
+    </header>
+  )
+}
+
+
+import React from 'react'
+import Cheader from './components/Cheader'
+
+export default function App() {
+  const data = {
+    welcome :"Welcome to react classes",
+    title :"MERN Educator",
+    author:"Adfar rasheed"
+  }
+  return (
+    <div>
+      <Cheader data={data}/>
+      
+    </div>
+  )
+}
+
+
+import React from 'react'
+import Skills from './components/Skills'
+
+export default function App() {
+  const skills =[
+    ["HTML",10],
+    ["CSS",9],
+    ["JS",8],
+    ["react","7"]
+  ]
+  return (
+    <div>
+     <Skills skills={skills}/>
+    </div>
+  )
+}
