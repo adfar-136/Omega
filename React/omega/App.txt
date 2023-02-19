@@ -299,3 +299,146 @@ export default function App() {
     </div>
   )
 }
+
+
+import React from 'react'
+// import About from './components/TextApp/About'
+import Message from './components/TextApp/Message'
+
+export default function App() {
+  return (
+    <div>
+      {/* <About/> */}
+      <Message/>
+    </div>
+  )
+}
+
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(){
+    super()
+    this.name =React.createRef()
+    this.password = React.createRef()
+  }
+  submitHandler=(event)=>{
+    event.preventDefault()
+    console.log(this.name.current.value,this.name.current.placeholder,this.password.current.value)
+  }
+  render() {
+    return (
+      <div>
+        <h1>Uncontrolled Components</h1>
+        <form onSubmit={this.submitHandler}>
+          <input type="text" placeholder='enter your name' ref={this.name}/> <br /><br />
+          <input type="password" placeholder='enter your password' ref={this.password} /><br /><br />
+          <button type='submit'>Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
+import React, { useRef } from 'react'
+
+export default function App() {
+  const name = useRef()
+  const password = useRef()
+  const submitHandler=(event)=>{
+    event.preventDefault()
+    console.log(name.current.value,name.current.placeholder,password.current.value)
+  }
+  return (
+    <div>
+      <h1>Uncontrolled Components</h1>
+        <form onSubmit={submitHandler}>
+          <input type="text" placeholder='enter your name' ref={name}/> <br /><br />
+          <input type="password" placeholder='enter your password' ref={password} /><br /><br />
+          <button type='submit'>Submit</button>
+        </form>
+    </div>
+  )
+}
+
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(){
+    super()
+    this.state ={
+      name : "",
+      pass:""
+    }
+  }
+  submit(){
+    console.log(this.state)
+  }
+  render() {
+    return (
+      <div>
+        <h1>Controlled Component</h1>
+        <input  onChange={(event)=>{this.setState({name:event.target.value})}} type="text" placeholder='Enter your Name' /><br /><br />
+        <input  onChange={(event)=>{this.setState({pass:event.target.value})}} type="password" placeholder='enter your passwprd' /><br /><br />
+        <button onClick={()=>{this.submit()}}>Submit</button>
+      </div>
+    )
+  }
+}
+
+import React, { Component } from 'react'
+const User =  ({firstname})=>(
+  <div>
+    <h1>welcome {firstname}</h1>
+  </div>
+)
+export default class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      firstname : "Vidya"
+    }
+  }
+  static getDerivedStateFromProps(props,state){
+    return {firstname:props.firstName}
+  }
+  render() {
+    return (
+      <div>
+        <User firstname={this.state.firstname}/>
+      </div>
+    )
+  }
+}
+
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(props){
+    console.log("constructor")
+    super(props)
+    this.state = {
+      firstname : "Vidya"
+    }
+  }
+   componentDidMount(){
+    console.log("cdn")
+    setTimeout(()=>{
+      this.setState({
+        firstname:"Adfar"
+      })
+    },4000)
+   }
+  render() {
+    console.log("render")
+    return (
+      <div>
+       {this.state.firstname}
+      </div>
+    )
+  }
+}
+
+
