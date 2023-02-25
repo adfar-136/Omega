@@ -442,3 +442,268 @@ export default class App extends Component {
 }
 
 
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      firstname:"Addddfar",
+      day : 0
+    }
+  }
+  shouldComponentUpdate(nextProps,nextState){
+    console.log(nextProps,nextState)
+    if(nextState.day >= 14){
+      return false
+    } else {
+      return true
+    }
+  }
+  Challenge=()=>{
+    this.setState({
+      day:this.state.day+1
+    })
+  }
+  componentDidUpdate(prevProps,prevState){
+    console.log(prevState)
+    if(prevState.day === 10){
+      this.setState({
+        firstname:"Challenge has been succesasfuly comp[leted"
+      })
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.day}</h1>
+        <h2>{this.state.firstname}</h2>
+        <button onClick={this.Challenge}>Challenge</button>
+      </div>
+    )
+  }
+}
+
+
+
+
+import React from 'react'
+import Comp1 from './components/comp/Comp1'
+import Comp2 from './components/comp/Comp2'
+
+export default function App() {
+  const mystyle = {
+    color:"green",
+    border:"1px red solid"
+  }
+  return (
+    <div>
+      <h1 style={{color:"red",backgroundColor:"pink"}}>Adfar Rasheed</h1>
+      <p style={mystyle}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores corporis nulla adipisci quaerat a sunt ut! Quas atque vitae dolorem neque.</p>
+       <Comp1/>
+       <Comp2/>
+    </div>
+  )
+}
+
+import React, { Component } from 'react'
+import "./App.css"
+export default class App extends Component {
+  constructor(props){
+    super(props)
+    this.state ={
+      isClasActive :true
+    }
+  }
+  toggleclass = ()=>{
+    this.setState({isClasActive:!this.state.isClasActive})
+  }
+  render() {
+    return (
+      <div>
+        <h1 className={this.state.isClasActive ?"active":"inactive"}>Adfar Rasheed</h1>
+        <button onClick={this.toggleclass}>Toggle</button>
+      </div>
+    )
+  }
+}
+
+
+import React, { Component } from 'react'
+import "./App.css"
+export default class App extends Component {
+  constructor(props){
+    super(props)
+    this.state ={
+      currentClass : "black"
+    }
+  }
+  green=()=>{
+    this.setState({currentClass:"green"})
+  }
+  blue=()=>{
+    this.setState({currentClass:"blue"})
+  }
+  red=()=>{
+    this.setState({currentClass:"red"})
+  }
+  yellow=()=>{
+    this.setState({currentClass:"yellow"})
+  }
+  reset=()=>{
+    this.setState({currentClass:"black"})
+  }
+  render() {
+    return (
+      <div>
+        <h1 className={this.state.currentClass}>Adfar Rasheed</h1>
+        <button onClick={this.reset}>Reset</button>
+        <button onClick={this.green}>Green</button>
+        <button onClick={this.blue}>Blue</button>
+        <button onClick={this.red}>Red</button>
+        <button onClick={this.yellow}>Yellow</button>
+      </div>
+    )
+  }
+}
+
+
+import React, { Component } from 'react'
+
+export default class App extends Component {
+  constructor(props){
+    super(props)
+    this.state={
+      count: 0
+    }
+  }
+  componentDidMount(){
+    console.log("cdm called")
+  }
+  componentDidUpdate(){
+    console.log("cdu called")
+  }
+  update=()=>{
+    this.setState({
+      count : this.state.count + 1
+    })
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        
+        <button onClick={this.update}>Update</button>
+      </div>
+    )
+  }
+}
+
+
+import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [count,setCount] = useState(0)
+  const [number,setNumber] = useState(0)
+  useEffect(()=>{
+    console.log("hello i am use effect")
+  },[count])
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={()=>setCount(count + 1)}>Update</button>
+      <h1>{number}</h1>
+      <button onClick={()=>setNumber(number + 1)}>Update</button>
+    </div>
+  )
+}
+
+
+import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [count,setCount] = useState(0)
+  
+  useEffect(()=>{
+    console.log("hello i am use effect")
+    const eventHandler =()=>console.log("1")
+    document.addEventListener("click",eventHandler);
+    return ()=>{
+      console.log("2")
+      document.removeEventListener("click",eventHandler)
+    }
+  },[count])
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={()=>setCount(count + 1)}>Update</button>
+      
+    </div>
+  )
+}
+
+
+import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [count,setCount] = useState(0)
+  
+  useEffect(()=>{
+    console.log("hello i am use effect")
+  const ci =   setInterval(()=>{
+      console.log("hi")
+    },2000)
+    return ()=>{
+      clearInterval(ci)
+    }
+  },[count])
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={()=>setCount(count + 1)}>Update</button>
+      
+    </div>
+  )
+}
+
+
+import React from 'react'
+import { useReducer } from 'react'
+const counterReducer=(state,action)=>{
+  console.log("state",state)
+  console.log("Action", action)
+  if (action.type === "Adfar"){
+    return {
+      count :state.count +1
+    }
+  }
+  else if(action.type === "Syed"){
+    return {
+      count : state.count + 213232
+    }
+  }
+  else if(action.type === "vidya"){
+    return {
+      count:state.count-343242
+    }
+  }
+  return state
+}
+export default function App() {
+  // const [first, setfirst] = useState(0)
+  const [state,dispatch] = useReducer(counterReducer,{count:0})
+  return (
+    <div>
+      <h1>{state.count}</h1>
+      <button onClick={()=>{dispatch({type:"Adfar"})}}>Change</button>
+      <button onClick={()=>{dispatch({type:"Syed"})}}>Change some</button>
+      <button onClick={()=>{dispatch({type:"Vidya"})}}>Change some</button>
+    </div>
+  )
+}

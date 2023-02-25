@@ -1,0 +1,18 @@
+.green{
+    background-color: green;
+    font-size: 50px;
+}
+.red{
+    background-color: rgb(250, 13, 9);
+    font-size: 70px;
+}
+.yellow{
+    background-color: yellow;
+}
+.blue{
+    background-color: blue;
+}
+.black{
+    background-color: black;
+    color: white;
+}

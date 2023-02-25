@@ -1,41 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { useReducer } from 'react'
+const counterReducer=(state,action)=>{
+  console.log("state",state)
+  console.log("Action", action)
+  switch(action){
+    case "one":
+      return state+1;
+    case "two":
+      return state+2;
+    case "minusone":
+      return state-1;
+    default:
+      return state
+  }
 
-export default class App extends Component {
-  constructor(props){
-    super(props)
-    this.state={
-      firstname:"Addddfar",
-      day : 0
-    }
-  }
-  shouldComponentUpdate(nextProps,nextState){
-    console.log(nextProps,nextState)
-    if(nextState.day >= 14){
-      return false
-    } else {
-      return true
-    }
-  }
-  Challenge=()=>{
-    this.setState({
-      day:this.state.day+1
-    })
-  }
-  componentDidUpdate(prevProps,prevState){
-    console.log(prevState)
-    if(prevState.day === 10){
-      this.setState({
-        firstname:"Challenge has been succesasfuly comp[leted"
-      })
-    }
-  }
-  render() {
-    return (
-      <div>
-        <h1>{this.state.day}</h1>
-        <h2>{this.state.firstname}</h2>
-        <button onClick={this.Challenge}>Challenge</button>
-      </div>
-    )
-  }
+}
+export default function App() {
+  // const [first, setfirst] = useState(0)
+  const [state,dispatch] = useReducer(counterReducer,0)
+  return (
+    <div>
+      <h1>{state}</h1>
+      <button onClick={()=>{dispatch("one")}}>one</button>
+      <button onClick={()=>{dispatch("two")}}>two</button>
+      <button onClick={()=>{dispatch("minusone")}}>minusone</button>
+    </div>
+  )
 }
