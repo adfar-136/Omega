@@ -707,3 +707,233 @@ export default function App() {
     </div>
   )
 }
+import React from 'react'
+import { useReducer } from 'react'
+const counterReducer=(state,action)=>{
+  console.log("state",state)
+  console.log("Action", action)
+  switch(action){
+    case "one":
+      return state+1;
+    case "two":
+      return state+2;
+    case "minusone":
+      return state-1;
+    default:
+      return state
+  }
+
+}
+export default function App() {
+  // const [first, setfirst] = useState(0)
+  const [state,dispatch] = useReducer(counterReducer,0)
+  return (
+    <div>
+      <h1>{state}</h1>
+      <button onClick={()=>{dispatch("one")}}>one</button>
+      <button onClick={()=>{dispatch("two")}}>two</button>
+      <button onClick={()=>{dispatch("minusone")}}>minusone</button>
+    </div>
+  )
+}
+
+
+import React, { createContext } from 'react'
+import CompA from './components/context Api/CompA'
+const firstname = createContext()
+const lastname = createContext()
+export default function App() {
+  return (
+    <div>
+      <firstname.Provider value={"Adfar"}>
+        <lastname.Provider value={"Rashid"}>
+        <CompA />
+        </lastname.Provider>
+      </firstname.Provider>
+    </div>
+  )
+}
+export {firstname,lastname}
+
+
+
+import React, { useMemo } from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [counterOne, setCounterOne] = useState(0)
+  const [counterTwo, setCounterTwo] = useState(0)
+  const incrementOne =()=>{
+    setCounterOne(counterOne+1)
+  }
+  const IncrementTwo =()=>{
+    setCounterTwo(counterTwo+1)
+  }
+  const isEven =useMemo(()=>{
+    let i = 0;
+    while(i<2000000000) i++;
+    return counterOne%2===0
+  },[counterOne])
+  return (
+    <div>
+      <br />
+        <button onClick={incrementOne}>counterOne -{counterOne}</button> <br /><br />
+        <h1>{isEven?"Even":"ODD"}</h1>
+        <button onClick={IncrementTwo}>counterTwo -{counterTwo}</button>
+    </div>
+  )
+}
+
+
+import React from 'react'
+import { useCallback } from 'react'
+import { useState } from 'react'
+const x = new Set()
+export default function App() {
+  const [count,setCount] = useState(0)
+  const [number,setNumber] = useState(0)
+  const incrementCount=useCallback(()=>{
+    setCount(count+1)
+  },[count])
+  const decrementCount=useCallback(()=>{
+    setCount(count-1)
+  },[count])
+  const incrementNumber=useCallback(()=>{
+    setNumber(number+1)
+  },[number])
+  x.add(incrementCount)
+  x.add(decrementCount)
+  x.add(incrementNumber)
+  alert(x.size)
+  return (
+    <div>
+      <button onClick={incrementCount}>Increase Counter</button>
+      <button onClick={decrementCount}>Decrease Counter</button>
+      <button onClick={incrementNumber}>Increase Number</button>
+    </div>
+  )
+}
+
+
+
+import React, { Component } from 'react'
+import Newsitem from './Newsitem'
+
+export default class News extends Component {
+    articles = [
+        {
+          "source": { "id": null, "name": "Diariomotor.com" },
+          "author": "Elena Sanz Bartolomé",
+          "title": "Las ventas de coches nuevos llevan medio año creciendo en Europa y, ahora, es España quien lidera la recuperación",
+          "description": "Buenas noticias para la industria del motor en Europa: por sexto mes, las ventas de coches nuevos en el ‘Viejo Continente’ han aumentado y el pronóstico para 2023 es, moderadamente, positivo. Y en este crecimiento hay un país que destaca por encima del resto …",
+          "url": "https://www.diariomotor.com/noticia/espana-lide-recuperacion-ventas-vehiculos-europa/",
+          "urlToImage": "https://www.diariomotor.com/imagenes/2023/02/comprar-coche-stock-noresizing-04-63f4c32cd726e.jpg",
+          "publishedAt": "2023-02-25T06:46:33Z",
+          "content": "Buenas noticias para la industria del motor en Europa: por sexto mes, las ventas de coches nuevos en el Viejo Continente han aumentado y el pronóstico para 2023 es, moderadamente, positivo. Y en este… [+2872 chars]"
+        },
+        {
+          "source": { "id": null, "name": "Biztoc.com" },
+          "author": "go.com",
+          "title": "Mexican states in hot competition over possible Tesla plant",
+          "description": "MEXICO CITY -- Mexico is undergoing a fevered competition among states to win a potential Tesla facility in jostling reminiscent of what happens among U.S. cities and states vying to win investments from tech companies. Mexican governors have gone to loopy ex…",
+          "url": "https://biztoc.com/x/ff83d8dec0516d8f",
+          "urlToImage": "https://c.biztoc.com/p/ff83d8dec0516d8f/og.webp",
+          "publishedAt": "2023-02-25T06:40:04Z",
+          "content": "MEXICO CITY -- Mexico is undergoing a fevered competition among states to win a potential Tesla facility in jostling reminiscent of what happens among U.S. cities and states vying to win investments … [+293 chars]"
+        },
+        {
+          "source": { "id": null, "name": "Thairath.co.th" },
+          "author": "Thairath",
+          "title": "Twitter ปิดระบบ Slack ภายในบริษัท ส่งผลให้พนักงานไม่สามารถปฏิบัติงานได้ตามปกติ",
+          "description": "สแลค (Slack) ระบบสื่อสารภายในของทีมงานทวิตเตอร์ ล่มแบบไม่ทราบเหตุผล โดยพนักงานได้รับการแจ้งว่าเป็นเพราะการบำรุงรักษา แต่ทีมงานสแลคให้ข้อมูลแย้งว่าทวิตเตอร์น่าจะปิดช่องทางดังกล่าวเอง",
+          "url": "https://www.thairath.co.th/news/tech/2639065",
+          "urlToImage": "https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5BwNdKhjWj1uxQ0nS5UhYkC4wZE5pdwRbgT1ZXlnWYOVwugs9jy.jpg",
+          "publishedAt": "2023-02-25T06:21:24Z",
+          "content": "(Jira) \r\n (Tesla) (Mattermost) (Outlook) (Teams) \r\n: Platformer"
+        },
+        {
+          "source": { "id": null, "name": "Biztoc.com" },
+          "author": "seattletimes.com",
+          "title": "Mexican states in hot competition over possible Tesla plant",
+          "description": "Mexico is undergoing a fevered competition among states to win a potential Tesla facility in jostling reminiscent of what happens among U.S. cities and states vying to win investments from tech companies.#mexico",
+          "url": "https://biztoc.com/x/fe01c5171701fa1b",
+          "urlToImage": "https://c.biztoc.com/p/fe01c5171701fa1b/og.webp",
+          "publishedAt": "2023-02-25T06:21:06Z",
+          "content": "Mexico is undergoing a fevered competition among states to win a potential Tesla facility in jostling reminiscent of what happens among U.S. cities and states vying to win investments from tech compa… [+69 chars]"
+        },
+        {
+          "source": { "id": null, "name": "Hvg.hu" },
+          "author": "hvg@hvg.hu",
+          "title": "Máglyára az összes dízellel? Teszten a legerősebb gázolajos új BMW X1",
+          "description": "Kipróbáltuk, hogy milyen a hétköznapi gyakorlatban a BMW legkisebb SUV-jának legerősebb dízelverziója, a 211 lovas X1 23d, melyről elöljáróban csak annyit, hogy akár 4 liternél is kevesebb gázolajjal is beéri 100 kilométeren.",
+          "url": "https://hvg.hu/cegauto/20230225_maglyara_az_osszes_dizellel_teszten_a_legerosebb_gazolajos_uj_bmw_x1_23d",
+          "urlToImage": "https://images.hvg.hu/image.jpg?id=76f49d59-4b19-4f60-a3ec-b502547989cf&view=7fcefbf8-ac48-4ee6-aef5-32203afa118c",
+          "publishedAt": "2023-02-25T06:21:00Z",
+          "content": "Kipróbáltuk, hogy milyen a hétköznapi gyakorlatban a BMW legkisebb SUV-jának legersebb dízelverziója, a 211 lovas X1 23d, melyrl elöljáróban csak annyit, hogy akár 4 liternél is kevesebb gázolajjal i… [+7790 chars]"
+        },
+        {
+          "source": { "id": null, "name": "Tom's Guide" },
+          "author": "Auriane Polge",
+          "title": "En Allemagne, les camions électriques se rechargent en roulant",
+          "description": "À quelques kilomètres de la frontière française en Allemagne, des tronçons d’autoroute électrique permettent aux camions électriques de se recharger en roulant grâce à des caténaires.",
+          "url": "https://www.tomsguide.fr/en-allemagne-les-camions-electriques-se-rechargent-en-roulant/",
+          "urlToImage": "https://www.tomsguide.fr/content/uploads/sites/2/2023/02/camion-electrique.jpeg",
+          "publishedAt": "2023-02-25T06:00:00Z",
+          "content": "À quelques kilomètres de la frontière française en Allemagne, des tronçons dautoroute électrique permettent aux camions électriques de se recharger en roulant grâce à des caténaires.Les poids-lourds … [+2393 chars]"
+        },
+        {
+          "source": { "id": null, "name": "Biztoc.com" },
+          "author": "reuters.com",
+          "title": "Tesla can't build in northern Mexico if water is scarce, president says",
+          "description": "Tesla Inc. would be denied permits to build a plant in the northern Mexican state of Nuevo Leon, where it has eyed investing, if water is scarce, Mexican President Andres Manuel Lopez Obrador said on Friday. His comments mark the strongest sign yet that his c…",
+          "url": "https://biztoc.com/x/bb63934fc8413e99",
+          "urlToImage": "https://c.biztoc.com/p/bb63934fc8413e99/og.webp",
+          "publishedAt": "2023-02-25T05:44:07Z",
+          "content": "Tesla Inc. would be denied permits to build a plant in the northern Mexican state of Nuevo Leon, where it has eyed investing, if water is scarce, Mexican President Andres Manuel Lopez Obrador said on… [+295 chars]"
+        },
+        {
+          "source": { "id": null, "name": "Slashdot.org" },
+          "author": "feedfeeder",
+          "title": "Tesla can't build in northern Mexico if water is scarce, president says - Reuters",
+          "description": "Tesla can't build in northern Mexico if water is scarce, president saysReuters Tesla may have trouble gaining permits in Nuevo Leon due to water shortage: PresidentTESLARATI Mexico Has Conflicting Yet Interesting Ideas for Tesla's FutureJalopnik Analysis: Dec…",
+          "url": "https://slashdot.org/firehose.pl?op=view&amp;id=170417784",
+          "urlToImage": "https://c.biztoc.com/p/ff782d15f003ef8c/og.webp",
+          "publishedAt": "2023-02-25T05:32:43Z",
+          "content": "Top Ten Things Overheard At The ANSI C Draft Committee Meetings:\r\n (7) Well, it's an excellent idea, but it would make the compilers too\r\n hard to write."
+        },
+        {
+          "source": { "id": null, "name": "Biztoc.com" },
+          "author": "go.com",
+          "title": "Mexican states in hot competition over possible Tesla plant",
+          "description": "MEXICO CITY -- Mexico is undergoing a fevered competition among states to win a potential Tesla facility in jostling reminiscent of what happens among U.S. cities and states vying to win investments from tech companies. Mexican governors have gone to loopy ex…",
+          "url": "https://biztoc.com/x/ff782d15f003ef8c",
+          "urlToImage": "https://c.biztoc.com/p/ff782d15f003ef8c/og.webp",
+          "publishedAt": "2023-02-25T05:30:05Z",
+          "content": "MEXICO CITY -- Mexico is undergoing a fevered competition among states to win a potential Tesla facility in jostling reminiscent of what happens among U.S. cities and states vying to win investments … [+293 chars]"
+        }
+      ]
+    constructor(props){
+        super(props)
+        this.state={
+            articles : this.articles
+        }
+    }
+  render() {
+    return (
+      <div className='container my-3'>
+      <h2>AdfarNews Website- Top Headlines</h2>
+      <div className="row">
+        {this.state.articles.map((element)=>{
+            return <div className='col-md-4'>
+            <Newsitem url ={element.url} title={element.title} urlToImage={element.urlToImage} description={element.description}/>
+            </div>
+        })}
+        </div>
+      </div>
+       
+        
+       
+    
+    )
+  }
+}
