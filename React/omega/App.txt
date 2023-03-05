@@ -937,3 +937,183 @@ export default class News extends Component {
     )
   }
 }
+
+
+
+
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import About from './components/Routes/About'
+import Adfar from './components/Routes/Adfar'
+import Contact from './components/Routes/Contact'
+
+import "./App.css"
+import Users from './components/Routes/Users'
+import UserDetails from './components/Routes/UserDetails'
+import Blog from './components/Routes/Blog'
+import Search from './components/Routes/Search'
+import MainHome from './components/Routes/MainHome'
+import Home from './components/Routes/Home'
+
+export default function App() {
+  return (
+   <BrowserRouter>
+     <Routes>
+       <Route path='/' element={<MainHome/>}>
+            <Route index element={<Home/>}/> 
+            <Route path='about' element={<About/>}/> 
+            <Route path='/contact' element={<Contact/>}>
+              <Route path='blog' element={<Blog/>}/> 
+              <Route path='search' element={<Search/>}/> 
+            </Route> 
+            
+            <Route path='adfar' element={<Adfar/>}/> 
+            <Route path='users' element={<Users/>}/>
+            <Route path='users/:id' element={<UserDetails/>}/>
+       </Route>
+     </Routes>
+   </BrowserRouter>
+  )
+}
+
+import React from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [name,setName] = useState("")
+  const [pass,setpass]= useState("")
+  const handle=()=>{
+    localStorage.setItem("Name",name)
+    localStorage.setItem("Password",pass)
+  }
+  const remove = ()=>{
+    localStorage.removeItem("Name")
+    localStorage.removeItem("Password")
+  }
+  return (
+    <>
+    <div>
+      <h1>Name of the User : </h1>
+      <input type="text" placeholder='Name' value={name} onChange={(e)=>{setName(e.target.value)}}/>
+      <h1>Password of the user :</h1>
+      <input type="password" placeholder='password' value={pass} onChange={(e)=>{setpass(e.target.value)}}/><br /><br />
+      <button onClick={handle}>Submit</button>
+    </div>
+    <div>
+      {localStorage.getItem("Name") && (
+        <div>
+          <h1>Name: {localStorage.getItem("Name")}</h1>
+        </div>
+      )}
+      {localStorage.getItem("Password") && (
+        <div>
+          <h1>Password: {localStorage.getItem("Password")}</h1>
+        </div>
+      )}
+      <div>
+        <button onClick={remove}>Remove</button>
+      </div>
+    </div>
+    </>
+  )
+}
+
+
+import React from 'react'
+import { useState } from 'react'
+
+export default function App() {
+  const [name,setName] = useState("")
+  const [email,setEmail] = useState("")
+  const [password,setPassword] = useState("")
+  const [isLoggedIn,setIsloggedIn] = useState(false)
+  const login =(e)=>{
+    e.preventDefault()
+    console.log(name,password,email)
+    const userData = {
+      name,email,password
+    }
+    localStorage.setItem("User-info",JSON.stringify(userData))
+    setIsloggedIn(true)
+    setName("")
+    setEmail("")
+    setPassword("")
+  }
+  const logout =()=>{
+    localStorage.removeItem("User-info")
+    setIsloggedIn(false)
+  }
+  return (
+    <div>
+      {!isLoggedIn ? (
+         <>
+           <form>
+            <input type="text" placeholder='Enter Name' 
+            value={name} onChange={(e)=>{setName(e.target.value)}}/>
+            <input type="email" placeholder='Enter Email' value={email}
+            onChange={(e)=>{setEmail(e.target.value)}}/>
+            <input type="password" placeholder='Enter password' value={password}
+            onChange={(e)=>{setPassword(e.target.value)}}/>
+            <button type='submit' onClick={login}>Login</button>
+           </form>
+         </>
+      ) :(
+        <>
+         <h1>User is logged In</h1>
+         <button onClick={logout}>Logout</button>
+        </>
+      )}
+    </div>
+  )
+}
+
+
+import React from 'react'
+import Like from './components/Like'
+import useCounter from './CustomHooks/useCounter'
+
+export default function App() {
+  const {count,increment,decrement} = useCounter()
+  
+  return (
+    <div>
+          <h1>{count}</h1>
+          <button onClick={increment}>Add</button>
+          <button onClick={decrement}>Min</button>
+          <Like/>
+    </div>
+  )
+}
+
+
+import React, { useState } from 'react'
+import useList from './CustomHooks/useList'
+
+export default function App() {
+  const [todo,setTodo] = useState("")
+  const {list,push,pull} =useList()
+  const onsubmitHandler=(e)=>{
+    e.preventDefault()
+    push(todo)
+    setTodo("")
+  }
+  return (
+    <div>
+      <header>
+        <form onSubmit={onsubmitHandler}>
+          <label>Add Todo</label>
+          <input type="text" value={todo} onChange={(e)=>{setTodo(e.target.value)}}/>
+          <button type='submit'>Add</button>
+        </form>
+        {list.map((listitem,listindex)=>{
+          return (
+            <>
+             <li key={listindex}>{listitem}</li>
+             <button onClick={()=>{pull(listindex)}}>Remove</button>
+            </>
+          )
+        })}
+      </header>
+    </div>
+  )
+}
