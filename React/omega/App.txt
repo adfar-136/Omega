@@ -1117,3 +1117,53 @@ export default function App() {
     </div>
   )
 }
+
+
+import React, { useState } from 'react'
+
+export default function App() {
+  const [task,setTask] = useState("")
+  const [todos,setTodos] = useState([])
+  const Handletodo =()=>{
+    if(task !== ""){
+      setTodos([...todos,task])
+      setTask("")
+    }
+
+  }
+  return (
+    <div>
+      <h1>Add Todo List</h1>
+      <input type="text" placeholder='Enter Todo' 
+      value={task} onChange={(e)=>{setTask(e.target.value)}}/>
+      <button onClick={Handletodo}>Add</button>
+      <div>
+        <ul>
+          {todos.map((todo,index)=>(
+            <li key={index}>{todo}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+import React,{Suspense,lazy} from 'react'
+
+const About = lazy(()=>import("./components/LazyLoading/About"))
+const Header = lazy(()=>import("./components/LazyLoading/Header"))
+export default function App() {
+  return (
+    <div>
+      <h1>LAzy Loading</h1>
+      <Suspense fallback={<div>Please wait ....</div>}>
+      <Header/>
+      </Suspense>
+      <Suspense fallback={<div>taa taa bye bye ....</div>}>
+      <About/>
+      </Suspense>
+     
+    </div>
+  )
+}
+
