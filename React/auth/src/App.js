@@ -6,6 +6,7 @@ import Login from "./components/Login/Login"
 import SignUp from "./components/SignUp/SignUp"
 import { auth } from "./firebase";
 import Profile from "./Profile";
+import Todo from "./Todo/Todo"
 function App() {
   const [username,setUsername] = useState("")
   useEffect(()=>{
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/todo" element={<Todo name={username}/>}/>
         <Route path="/profile" element={<Profile name={username}/>}/>
      </Routes>
     </BrowserRouter>

@@ -19,7 +19,7 @@ export default function Login() {
     }
     setErrorMsg("")
     signInWithEmailAndPassword(auth,values.email,values.password).then((res)=>{
-      navigate("/profile")
+      navigate("/todo")
     }).catch((err)=>{
       setErrorMsg(err.message)
     })
