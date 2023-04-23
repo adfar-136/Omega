@@ -7,7 +7,7 @@ connectMongoose()
 const bodyParser = require("body-parser")
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
-const {initializePassport} = require("./passportconfig")
+const {initializePassport, isAuthenticated} = require("./passportconfig")
 initializePassport(passport)
 app.use(expressSession({secret:"secret",resave:false}))
 app.use(passport.initialize())
@@ -24,11 +24,11 @@ app.post("/register",async(req,res)=>{
   const newUser =await User.create(req.body)
   res.status(201).send(newUser)
 })
-app.post("/login",(req,res)=>{
+app.post("/login",
   passport.authenticate("local",{successRedirect:"/profile",failureRedirect:"/register"})
-})
-app.get("/profile",(req,res)=>{
-    res.send("logged in successfully")
+)
+app.get("/profile",isAuthenticated,(req,res)=>{
+    res.render("profile")
 })
 app.get("/register",(req,res)=>{
     res.render("register")
@@ -36,6 +36,13 @@ app.get("/register",(req,res)=>{
 app.get("/login",(req,res)=>{
     res.render("login")
 })
+app.get("/logout",(req,res)=>{
+    req.logout(()=>{
+
+    })
+    res.send("LoggedOut Succefully")
+})
 app.listen(4000,()=>{
     console.log("connected to 4000 port")
 })
+
